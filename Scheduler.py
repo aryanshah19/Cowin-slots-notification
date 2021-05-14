@@ -45,22 +45,20 @@ def send_email():
 	else:
 		email_msg = email.message.EmailMessage()
 		email_msg["Subject"] = "Vaccine Slots Available!!"
-		email_msg["From"] = "aryan.sce19@sot.pdpu.ac.in"
-		email_msg["To"] = "aryan.sce19@sot.pdpu.ac.in"
+		email_msg["From"] = "username"
+		email_msg["To"] = "username"
 		email_msg.set_content("District: Ahmedabad Corporation\n\n"+content)
 		
 		with smtplib.SMTP(host='smtp.gmail.com', port='587') as server:
 			server.starttls()
-			server.login("aryan.sce19@sot.pdpu.ac.in", "Abc123&#")
-			server.send_message(email_msg, "aryan.sce19@sot.pdpu.ac.in","aryan.sce19@sot.pdpu.ac.in")
+			server.login("login-id", "Password")
+			server.send_message(email_msg, "From_username","To_username")
 			
 
 
 schedule.every(0.2).minutes.do(send_email)
 
 while True:
-		# Checks whether a scheduled task 
-		# is pending to run or not
 		schedule.run_pending()
 		time.sleep(1)
 	
